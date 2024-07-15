@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Heebo", sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #171023;
+    height: 100vh;
+}
+
+.interface{
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.flex{
+    display: flex;
+}
+
+.titulo{
+    color: #fff;
+    font-size: 38px;
+    text-align: center;
+    font-family: kalam;
+}
+
+.logo h1{
+    font-family: kalam;
+    color: #fff;
+    font-weight: 3;
+}
+
+.logo h1 span{
+    font-family: kalam;
+    font-weight: 600;
+}
+
+.btn-social button{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background-color: #8A42DB;
+    font-size: 25px;
+    transition: .2s;
+}
+.btn-social button:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ffffff85;
+    cursor: pointer;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+
+@media screen and (max-width: 1020px){
+    /*Classes gerais*/
+
+    .flex{
+        flex-direction: column;
+    }
+
+    .topo-do-site .flex{
+        flex-direction: column-reverse;
+    }
+
+    .titulo{
+        font-size: 30px;
+    }
+
+
+    /*Cabeçalho*/
+    .menu-desktop, .btn-contato{
+        display: none;
+    }
+
+}

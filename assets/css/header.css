@@ -1,0 +1,134 @@
+header{
+    padding: 40px 4%;
+    box-shadow: 0px 3px 10px #2c243b;
+}
+
+header > .interface{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header a{
+    color: #CDD0D4;
+    text-decoration: none;
+    display: inline-block;
+    transition: .2s;
+}
+
+header nav.menu-desktop a:hover{
+    color: #F5F6F6;
+    transform: scale(1.05);
+
+}
+
+header nav ul{
+    list-style: none;
+
+}
+
+header nav.menu-desktop ul li {
+    display: inline-block;
+    padding: 0 40px;
+
+}
+
+header .logo h1{
+    font-family: kalam;
+    color: #fff;
+    font-weight: 3;
+}
+
+header .logo h1 span{
+    font-family: kalam;
+    font-weight: 600;
+}
+
+header .btn-contato button{
+    padding: 10px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    border: 0;
+    border-radius: 30px;
+    cursor: pointer;
+    background-color: #8A42DB;
+}
+
+.botoes {
+    display: flex;
+    gap: 10px;
+}
+
+header .btn-contato button:hover{
+    box-shadow: 0px 0px 5px  #fff;
+    transform: scale(1.05);
+}
+
+/*Estilo menu mobile*/
+
+.btn-abrir-menu i{
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+
+}
+.menu-mobile{
+    background-color: #2c243b;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99999;
+    width: 0%;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.menu-mobile.abrir-menu{
+    width: 70%;
+}
+
+.menu-mobile.abrir-menu ~ .overlay-menu{
+    display: block;
+}
+
+.menu-mobile .btn-fechar{
+    padding: 20px 5%;
+}
+
+.menu-mobile .btn-fechar i{
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.menu-mobile nav ul{
+    text-align: right;
+}
+
+.menu-mobile nav ul li a{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 20px 8%;
+    display: block;
+}
+
+.menu-mobile nav ul li a:hover{
+    background: #7819e6;
+    color: black;
+}
+
+.overlay-menu{
+    background-color: rgba(0, 0, 0, 0.411);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 88888;
+    display: none;
+}
+.btn-abrir-menu{
+    display: none;
+}

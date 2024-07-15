@@ -1,0 +1,25 @@
+footer {
+    padding: 10px 4%;
+    box-shadow: 0 0 40px 10px #ffffff52;
+}
+
+footer .flex{
+    justify-content: space-between;
+}
+
+footer .line-footer{
+    padding: 10px 0;
+}
+.borda{
+    border-top: 2px solid #fff;
+}
+
+footer .line-footer p i{
+    color: #fff;
+    font-size: 16px;
+}
+
+footer .line-footer p a{
+    color: #fff;
+    text-decoration: none;
+}
