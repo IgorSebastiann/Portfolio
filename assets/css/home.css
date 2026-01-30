@@ -86,6 +86,38 @@ section#especialidades .flex{
     box-shadow: 0 0 20px #ffffff85;
 }
 
+.especialidades-grid {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.especialidade-logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.especialidade-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Cores oficiais das linguagens (como na internet) */
+.logo-html5 img {
+    filter: invert(24%) sepia(93%) saturate(2841%) hue-rotate(350deg) brightness(92%) contrast(91%);
+}
+.logo-css3 img {
+    filter: invert(31%) sepia(60%) saturate(2000%) hue-rotate(195deg) brightness(92%) contrast(89%);
+}
+.logo-javascript img {
+    filter: invert(88%) sepia(21%) saturate(2842%) hue-rotate(359deg) brightness(102%) contrast(97%);
+}
+
 #especialidades .especialidades-box i{
     font-size: 55px;
 }
@@ -93,7 +125,69 @@ section#especialidades .flex{
 #especialidades .especialidades-box p{
     font-size: 18px;
     margin: 15px 0;
+}
 
+/* Core Skills */
+section#core-skills {
+    padding: 80px 4%;
+}
+
+.core-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+    max-width: 900px;
+    margin: 40px auto 0;
+}
+
+.core-skill-card {
+    background: rgba(44, 36, 59, 0.5);
+    border: 1px solid rgba(138, 66, 219, 0.25);
+    border-radius: 20px;
+    padding: 32px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.core-skill-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(138, 66, 219, 0.2);
+}
+
+.core-skill-card h3 {
+    color: #fff;
+    font-size: 1.35rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.core-skill-card h3 i {
+    color: #8A42DB;
+    font-size: 1.5rem;
+}
+
+.core-skill-card ul {
+    list-style: none;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tags li {
+    background: rgba(138, 66, 219, 0.25);
+    color: #E5E7EB;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(138, 66, 219, 0.3);
+}
+
+.skill-tags li:hover {
+    background: rgba(138, 66, 219, 0.35);
 }
 
 /*Estilo Sobre*/
@@ -192,155 +286,385 @@ section#portifolio .flex{
     opacity: 1;
 }
 
-/*ESTILO CONTATO*/
+/* ESTILO CONTATO */
 
-section#formulario{
+section#formulario {
     padding: 80px 4%;
 }
 
-form{
-    max-width: 500px;
+.formulario-container {
+    max-width: 520px;
     margin: 0 auto;
+    padding: 48px 40px;
+    background: rgba(44, 36, 59, 0.4);
+    border-radius: 24px;
+    border: 1px solid rgba(138, 66, 219, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.formulario-descricao {
+    color: #CDD0D4;
+    text-align: center;
+    margin: -8px 0 32px;
+    font-size: 1rem;
+}
+
+.form-success {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    border-radius: 12px;
+    color: #86efac;
+    margin-bottom: 24px;
+}
+
+.form-success[hidden] {
+    display: none !important;
+}
+
+.form-success i {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.form-success p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+#formulario .titulo {
+    margin-bottom: 0;
+}
+
+form {
+    display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 }
 
-form input , form textarea{
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+form label {
+    color: #E5E7EB;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+form input,
+form textarea {
     width: 100%;
-    background-color: #242424;
-    border: 0;
+    background-color: #1f1b24;
+    border: 2px solid transparent;
     outline: 0;
-    padding:20px 15px;
-    border-radius: 30px;
+    padding: 16px 18px;
+    border-radius: 12px;
     color: #fff;
-    font-size: 18px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-form input::placeholder{
-    color: #ffffff4b;
+form input::placeholder,
+form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.35);
 }
 
-form textarea{
-    resize: none;
-    height: 200px;
+form input:hover,
+form textarea:hover {
+    border-color: rgba(138, 66, 219, 0.3);
 }
 
-form .btn-enviar{
-    margin-top: 30px;
+form input:focus,
+form textarea:focus {
+    border-color: #8A42DB;
+    box-shadow: 0 0 0 3px rgba(138, 66, 219, 0.2);
+}
+
+form input.error,
+form textarea.error {
+    border-color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.08);
+}
+
+form input.valid:not(:focus),
+form textarea.valid:not(:focus) {
+    border-color: rgba(34, 197, 94, 0.5);
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.error-message {
+    color: #f87171;
+    font-size: 0.85rem;
+    min-height: 1.25em;
+}
+
+.form-group:has(.error-message:not(:empty)) .error-message {
+    margin-top: 2px;
+}
+
+form .btn-enviar {
+    margin-top: 12px;
     text-align: center;
 }
 
-form .btn-enviar input{
-    width: 120px;
-    background-color: #8A42DB;
-    font-weight: 700;
-    color: black;
+form .btn-enviar button,
+form .btn-enviar input[type="submit"] {
+    width: 100%;
+    max-width: 200px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #8A42DB 0%, #6d28d9 100%);
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
     cursor: pointer;
-
+    font-size: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-form .btn-enviar input:hover{
-    box-shadow: 0px 0px 5px  #fff;
-    transition: 0.2s;
-    transform: scale(1.05);
+form .btn-enviar button:hover,
+form .btn-enviar input[type="submit"]:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 20px rgba(138, 66, 219, 0.4);
+}
+
+form .btn-enviar button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
 }
 
 #voltarTopo {
     position: fixed;
-    bottom: 30px; 
+    bottom: 24px;
     right: 20px;
-    z-index: 100; 
-    border-radius: 50px;
+    z-index: 100;
+    border-radius: 50%;
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     background-color: #8A42DB;
     font-weight: 700;
     color: black;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 20px rgba(138, 66, 219, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
   }
 
-@media screen and (max-width: 1020px){
+#voltarTopo:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 24px rgba(138, 66, 219, 0.5);
+  }
 
-    /*topo do site*/
-
-    section#topo-do-site .flex{
+@media screen and (max-width: 1020px) {
+    section#topo-do-site .flex {
         gap: 40px;
     }
-
-    section#topo-do-site{
-        padding: 40px 8%;
+    section#topo-do-site {
+        padding: 48px 5%;
     }
-
-    #topo-do-site h2{
+    #topo-do-site h2 {
         font-weight: 600;
         font-size: 30px;
+        line-height: 1.2;
     }
-
-    #topo-do-site .img-topo-site img{
+    #topo-do-site .txt-topo-site p {
+        font-size: 16px;
+    }
+    #topo-do-site .botoes {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    #topo-do-site .btn-contato {
+        padding: 10px 28px;
+        font-size: 16px;
+    }
+    #topo-do-site .img-topo-site img {
         width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+        display: block;
     }
-
-    /*Estilo Especialidades*/
-    section#especialidades{
-     padding: 80px 8%;
+    section#especialidades {
+        padding: 56px 5%;
     }
-
-    /*Estilo Sobre*/
-
-    section#sobre{
-        padding: 80px 8%;
+    section#core-skills {
+        padding: 56px 5%;
     }
-
-    #sobre .txt-sobre h2{
+    .core-skills-grid {
+        margin-top: 28px;
+        gap: 24px;
+    }
+    .core-skill-card {
+        padding: 24px;
+    }
+    .core-skill-card h3 {
+        font-size: 1.2rem;
+    }
+    .skill-tags li {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+    }
+    section#especialidades .flex {
+        gap: 24px;
+    }
+    #especialidades .especialidades-box {
+        padding: 28px 24px;
+        margin-top: 0;
+    }
+    #especialidades .especialidades-box p {
+        font-size: 16px;
+    }
+    section#sobre {
+        padding: 56px 5%;
+    }
+    section#sobre .flex {
+        gap: 32px;
+    }
+    #sobre .txt-sobre h2 {
         font-size: 30px;
     }
-
-    #sobre .txt-sobre p{
+    #sobre .txt-sobre p {
         font-size: 15px;
-        line-height: 23px;
+        line-height: 1.5;
     }
-
-    .btn-social{
+    #sobre .img-sobre img {
+        width: 240px;
+        max-width: 100%;
+    }
+    .btn-social {
         text-align: center;
     }
-
-    /*ESTILO PORTIFÓLIO*/
-
-    section#portifolio{
-        padding: 80px 8%;
+    section#portifolio {
+        padding: 56px 5%;
     }
-
-    .img-port{
+    section#portifolio .flex {
+        gap: 32px;
+        align-items: center;
+    }
+    .img-port {
         width: 100%;
         max-width: 360px;
+        height: 380px;
         margin: 0 auto;
     }
-
-    section#portifolio .flex{
-        gap: 40px;
+    section#formulario {
+        padding: 56px 5%;
     }
+    .formulario-container {
+        padding: 32px 24px;
+    }
+    .formulario-descricao {
+        font-size: 0.95rem;
+        margin-bottom: 24px;
+    }
+    form {
+        padding: 0;
+    }
+    form input, form textarea {
+        padding: 16px 14px;
+        font-size: 16px;
+    }
+    .btn-social button {
+        width: 48px;
+        height: 48px;
+        font-size: 22px;
+    }
+    .btn-abrir-menu {
+        display: block;
+    }
+}
 
-    footer .flex{
+@media screen and (max-width: 768px) {
+    section#topo-do-site {
+        padding: 32px 5%;
+    }
+    #topo-do-site h2 {
+        font-size: 26px;
+    }
+    #topo-do-site h3 {
+        font-size: 1rem;
+    }
+    #topo-do-site .txt-topo-site p {
+        font-size: 15px;
+    }
+    #especialidades .especialidades-box i {
+        font-size: 42px;
+    }
+    #especialidades .especialidades-box h3 {
+        font-size: 1.25rem;
+    }
+    .img-port {
+        height: 320px;
+    }
+    #voltarTopo {
+        width: 44px;
+        height: 44px;
+        bottom: 20px;
+        right: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    section#topo-do-site {
+        padding: 24px 6%;
+    }
+    #topo-do-site h2 {
+        font-size: 22px;
+    }
+    #topo-do-site .botoes {
         flex-direction: column;
     }
-
-    footer .line-footer{
-        text-align: center;
+    #topo-do-site .btn-contato {
+        width: 100%;
+        justify-content: center;
     }
-
-    .btn-social button{
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        border: none;
-        background-color: #8A42DB;
+    section#especialidades,
+    section#sobre,
+    section#core-skills,
+    section#portifolio,
+    section#formulario {
+        padding: 40px 6%;
+    }
+    .core-skill-card {
+        padding: 20px;
+    }
+    .core-skill-card h3 {
+        font-size: 1.1rem;
+    }
+    .formulario-container {
+        padding: 24px 20px;
+    }
+    form .btn-enviar button {
+        max-width: 100%;
+    }
+    #sobre .img-sobre img {
+        width: 200px;
+    }
+    .img-port {
+        height: 280px;
+    }
+    form textarea {
+        height: 160px;
+    }
+    .btn-social button {
+        width: 44px;
+        height: 44px;
         font-size: 20px;
-        transition: .2s;
-    }
-    .btn-abrir-menu{
-        display: block;
     }
 }

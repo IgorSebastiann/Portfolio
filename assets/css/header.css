@@ -1,67 +1,100 @@
-header{
-    padding: 40px 4%;
-    box-shadow: 0px 3px 10px #2c243b;
+header {
+    padding: 20px 4%;
+    background: rgba(23, 16, 35, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(138, 66, 219, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-header > .interface{
+header > .interface {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 24px;
 }
 
-header a{
-    color: #CDD0D4;
+header a {
+    color: #E5E7EB;
     text-decoration: none;
     display: inline-block;
-    transition: .2s;
+    transition: color 0.2s, transform 0.2s;
 }
 
-header nav.menu-desktop a:hover{
-    color: #F5F6F6;
-    transform: scale(1.05);
-
+header .logo h1 {
+    font-family: kalam;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
 }
 
-header nav ul{
+header nav.menu-desktop ul {
     list-style: none;
-
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 header nav.menu-desktop ul li {
-    display: inline-block;
-    padding: 0 40px;
-
+    padding: 0 6px;
 }
 
-header .logo h1{
-    font-family: kalam;
+header nav.menu-desktop a {
+    padding: 8px 16px;
+    border-radius: 8px;
+    position: relative;
+    color: #CDD0D4;
+}
+
+header nav.menu-desktop a::after {
+    content: "";
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 4px;
+    height: 2px;
+    background: linear-gradient(90deg, #8A42DB, #a78bfa);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+}
+
+header nav.menu-desktop a:hover {
     color: #fff;
-    font-weight: 3;
 }
 
-header .logo h1 span{
-    font-family: kalam;
-    font-weight: 600;
+header nav.menu-desktop a:hover::after {
+    transform: scaleX(1);
 }
 
-header .btn-contato button{
-    padding: 10px 40px;
-    font-size: 18px;
+header .btn-contato a {
+    text-decoration: none;
+}
+
+header .btn-contato button {
+    padding: 12px 28px;
+    font-size: 1rem;
     font-weight: 600;
-    border: 0;
-    border-radius: 30px;
+    border: none;
+    border-radius: 12px;
     cursor: pointer;
-    background-color: #8A42DB;
+    background: linear-gradient(135deg, #8A42DB 0%, #6d28d9 100%);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(138, 66, 219, 0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+header .btn-contato button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(138, 66, 219, 0.45);
 }
 
 .botoes {
     display: flex;
     gap: 10px;
-}
-
-header .btn-contato button:hover{
-    box-shadow: 0px 0px 5px  #fff;
-    transform: scale(1.05);
 }
 
 /*Estilo menu mobile*/
@@ -129,6 +162,21 @@ header .btn-contato button:hover{
     z-index: 88888;
     display: none;
 }
-.btn-abrir-menu{
+.btn-abrir-menu {
     display: none;
+}
+
+@media screen and (max-width: 1020px) {
+    header {
+        padding: 16px 4%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header .logo h1 {
+        font-size: 1rem;
+    }
+    .menu-mobile.abrir-menu {
+        width: 85%;
+    }
 }

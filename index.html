@@ -12,10 +12,15 @@
     <script src="assets/js/script.js" defer></script>
 </head>
 <body>
+    <div class="bg-animated" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
     <header>
         <div class="interface">
             <div class="logo">
-                <h1>Igor Sebas<span>tian Mathias</span></h1>
+                <h1><span class="nome-fade">Igor Sebastian Mathias</span></h1>
             </div><!--logo-->
                 
                 <nav class="menu-desktop">
@@ -23,7 +28,8 @@
                                 <li><a href="#topo-do-site" class="nav-link">Home</a></li>
                                 <li><a href="#sobre" class="nav-link">About</a></li>
                                 <li><a href="#portifolio" class="nav-link">Projets</a></li>
-                                <li><a href="#especialidades" class="nav-link">knowledges</a></li>
+                                <li><a href="#especialidades" class="nav-link">Knowledges</a></li>
+                                <li><a href="#core-skills" class="nav-link">Skills</a></li>
                             </ul>
                 </nav><!--menu-desktop-->
 
@@ -43,7 +49,8 @@
                         <li><a href="#topo-do-site" class="nav-link">Home</a></li>
                         <li><a href="#sobre" class="nav-link">About</a></li>
                         <li><a href="#portifolio" class="nav-link">Projets</a></li>
-                        <li><a href="#especialidades" class="nav-link">knowledges</a></li>
+                        <li><a href="#especialidades" class="nav-link">Knowledges</a></li>
+                        <li><a href="#core-skills" class="nav-link">Skills</a></li>
                         <li><a href="#formulario" class="nav-link">Contact</a></li>
                     </ul>
                 </nav>  
@@ -88,26 +95,61 @@
 
         <section id="especialidades">
             <div class="interface">
-                <h2 class="titulo">knowledges</h2>
-                <div class="flex">
-                    <div class="especialidades-box">script.js
-                        <i class="bi bi-filetype-html"></i>
+                <h2 class="titulo">Knowledges</h2>
+                <div class="flex especialidades-grid">
+                    <div class="especialidades-box">
+                        <div class="especialidade-logo logo-html5">
+                            <img src="assets/img/html5.svg" alt="HTML5">
+                        </div>
                         <h3>HTML</h3>
-                        <p>As a web developer, I possess a comprehensive understanding of HTML, enabling me to craft well-structured and semantically meaningful web pages. My proficiency in HTML allows me to:</p>
+                        <p>As a web developer, I possess a comprehensive understanding of HTML, enabling me to craft well-structured and semantically meaningful web pages.</p>
                     </div>
                     <div class="especialidades-box">
-                        <i class="bi bi-filetype-css"></i>
+                        <div class="especialidade-logo">
+                            <img src="assets/img/css3.svg" alt="CSS3">
+                        </div>
                         <h3>CSS</h3>
-                        <p>As a web developer, I've honed my CSS skills to create visually stunning and user-friendly websites. I'm passionate about leveraging CSS's versatility to achieve a seamless blend of aesthetics and functionality.</p>
+                        <p>I've honed my CSS skills to create visually stunning and user-friendly websites, leveraging CSS's versatility for aesthetics and functionality.</p>
                     </div>
                     <div class="especialidades-box">
-                        <i class="bi bi-filetype-js"></i>
+                        <div class="especialidade-logo logo-javascript">
+                            <img src="assets/img/javascript.svg" alt="JavaScript">
+                        </div>
                         <h3>JavaScript</h3>
-                        <p>As a web developer, I possess a strong command of JavaScript, enabling me to create interactive and engaging web experiences. </p>
-                    </div> <!--especialidades-box-->
-                </div> <!--flex-->
-            </div> <!--interface-->
-        </section> <!--especialidades-->
+                        <p>I possess a strong command of JavaScript, enabling me to create interactive and engaging web experiences.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="core-skills">
+            <div class="interface">
+                <h2 class="titulo">🛠️ Core Skills</h2>
+                <div class="core-skills-grid">
+                    <div class="core-skill-card">
+                        <h3><i class="bi bi-robot"></i> RPA & Automation</h3>
+                        <ul class="skill-tags">
+                            <li>UiPath Studio</li>
+                            <li>REFramework</li>
+                            <li>Orchestrator</li>
+                            <li>Queues</li>
+                            <li>Selectors</li>
+                            <li>PDF / Excel Automation</li>
+                            <li>Web Automation</li>
+                        </ul>
+                    </div>
+                    <div class="core-skill-card">
+                        <h3><i class="bi bi-code-slash"></i> Software Development</h3>
+                        <ul class="skill-tags">
+                            <li>Python Automation Scripts</li>
+                            <li>JavaScript</li>
+                            <li>C# Fundamentals</li>
+                            <li>API Consumption</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section id="sobre">
             <div class="interface">
@@ -149,46 +191,66 @@
 
         <section id="formulario">
             <div class="interface">
-                <h2 class="titulo">Contact</h2>
-                <form id="form">
-                    
-                    <input type="text" id="name" placeholder="Enter your name">
-                  
-                    <input type="email" id="email" placeholder="Enter your email">
-                  
-                    <input type="tel" id="phone" placeholder="Enter your phone number">
-                
-                    <textarea name="message" id="message" placeholder="Your Message" class="inputs required"></textarea>
-                    
-                    <div class="btn-enviar">
-                        <input type="submit" value="SUBMIT">
-                    </div><!--btn-enviar-->
-                </form>
-            </div><!--interface-->
-        </section> <!--formulario-->
+                <div class="formulario-container">
+                    <h2 class="titulo">Contact</h2>
+                    <p class="formulario-descricao">Send a message and I'll get back to you as soon as possible.</p>
+                    <div id="form-success" class="form-success" role="alert" aria-live="polite" hidden>
+                        <i class="bi bi-check-circle-fill"></i>
+                        <p>Message sent successfully! I'll get back to you soon.</p>
+                    </div>
+                    <!-- Para receber direto no Gmail sem abrir o cliente de e-mail: crie um formulário em https://formspree.io com seu e-mail e substitua o data-formspree-id abaixo pelo ID do formulário. -->
+                    <form id="form" novalidate data-formspree-id="xwvbawgg" data-mailto="igor.sebastian23@gmail.com">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" maxlength="100">
+                            <span class="error-message" id="name-error" role="alert"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email">
+                            <span class="error-message" id="email-error" role="alert"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000" autocomplete="tel" maxlength="16">
+                            <span class="error-message" id="phone-error" role="alert"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Your message..." rows="5" maxlength="1000"></textarea>
+                            <span class="error-message" id="message-error" role="alert"></span>
+                        </div>
+                        <div class="btn-enviar">
+                            <button type="submit" id="btn-submit">Send message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
 
         <button id="voltarTopo"><i class="bi bi-arrow-up"></i></button>
     </main>
 
     <footer>
         <div class="interface">
-            <div class="line-footer">
-                <div class="flex">
-                    <div class="logo">
-                        <h1>Igor Sebas<span>tian Mathias</span></h1>
-                    </div><!--logo-->
-                    <div class="btn-social">
-                        <a href="https://www.instagram.com/igor_sebastiann/"><Button><i class="bi bi-instagram"></i></Button></a>
-                        <a href="https://www.linkedin.com/in/igor-sebastian-mathias-948697250/"><button><i class="bi bi-linkedin"></i></button></a>
-                        <a href="https://wa.me/+5547997834557"><button><i class="bi bi-whatsapp"></i></button></a>
-                    </div><!--btn-social-->
-                </div><!--flex-->
-            </div><!--line-footer-->
-
-            <div class="line-footer borda">
-                <p><i class="bi bi-envelope"></i> <a href="mailto:igor.sebastian23@gmail.com">igor.sebastian23@gmail.com</a></p>
-            </div><!--line-footer-->
-        </div><!--interface-->
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <span class="nome-fade">Igor Sebastian Mathias</span>
+                </div>
+                <div class="footer-email">
+                    <i class="bi bi-envelope"></i>
+                    <a href="mailto:igor.sebastian23@gmail.com">igor.sebastian23@gmail.com</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/igor_sebastiann/" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/igor-sebastian-mathias-948697250/" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://wa.me/+5547997834557" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© <span id="current-year"></span> Igor Sebastian Mathias. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>

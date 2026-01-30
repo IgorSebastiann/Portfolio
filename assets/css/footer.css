@@ -1,25 +1,117 @@
 footer {
-    padding: 10px 4%;
-    box-shadow: 0 0 40px 10px #ffffff52;
+    padding: 0;
+    margin-top: 0;
+    background: rgba(23, 16, 35, 0.9);
+    border-top: 1px solid rgba(138, 66, 219, 0.2);
+    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.15);
 }
 
-footer .flex{
+.footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
+    gap: 24px;
+    padding: 32px 0 24px;
 }
 
-footer .line-footer{
-    padding: 10px 0;
-}
-.borda{
-    border-top: 2px solid #fff;
-}
-
-footer .line-footer p i{
-    color: #fff;
-    font-size: 16px;
+.footer-logo {
+    font-family: kalam, cursive;
+    font-size: 1.35rem;
+    font-weight: 600;
 }
 
-footer .line-footer p a{
-    color: #fff;
+.footer-logo .nome-fade {
+    background: linear-gradient(90deg, #F5F6F6 0%, #cdb4e8 50%, #8A42DB 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.footer-email {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #CDD0D4;
+    font-size: 0.95rem;
+}
+
+.footer-email i {
+    color: #8A42DB;
+    font-size: 1.1rem;
+}
+
+.footer-email a {
+    color: #E5E7EB;
     text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-email a:hover {
+    color: #a78bfa;
+}
+
+.footer-social {
+    display: flex;
+    gap: 12px;
+}
+
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(138, 66, 219, 0.2);
+    color: #E5E7EB;
+    font-size: 1.25rem;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.footer-social a:hover {
+    background: rgba(138, 66, 219, 0.4);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    padding: 20px 0 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    text-align: center;
+}
+
+.footer-bottom .copyright {
+    margin: 0;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.02em;
+}
+
+@media screen and (max-width: 768px) {
+    .footer-top {
+        flex-direction: column;
+        text-align: center;
+        padding: 28px 0 20px;
+    }
+    .footer-email {
+        justify-content: center;
+    }
+    .footer-bottom .copyright {
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .footer-logo {
+        font-size: 1.15rem;
+    }
+    .footer-email {
+        font-size: 0.9rem;
+    }
+    .footer-social a {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
 }

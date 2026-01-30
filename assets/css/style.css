@@ -10,12 +10,78 @@
 
 body{
     background-color: #171023;
-    height: 100vh;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Fundo animado que segue o mouse */
+.bg-animated {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+    transition: transform 0.15s ease-out;
+    will-change: transform;
+}
+
+.blob-1 {
+    width: min(70vw, 500px);
+    height: min(70vw, 500px);
+    background: radial-gradient(circle, #8A42DB 0%, transparent 70%);
+    top: 10%;
+    left: 10%;
+}
+
+.blob-2 {
+    width: min(50vw, 400px);
+    height: min(50vw, 400px);
+    background: radial-gradient(circle, #5e2d99 0%, transparent 70%);
+    bottom: 20%;
+    right: 10%;
+}
+
+.blob-3 {
+    width: min(40vw, 300px);
+    height: min(40vw, 300px);
+    background: radial-gradient(circle, #a855f7 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .blob { transition: none; }
+    .logo .nome-fade { animation: none; background-position: 0% center; }
 }
 
 .interface{
     max-width: 1280px;
     margin: 0 auto;
+    padding: 0 4%;
+}
+
+main {
+    position: relative;
+    z-index: 1;
+}
+
+header {
+    position: relative;
+    z-index: 10;
+}
+
+footer {
+    position: relative;
+    z-index: 1;
 }
 
 .flex{
@@ -29,15 +95,30 @@ body{
     font-family: kalam;
 }
 
-.logo h1{
+.logo h1 {
     font-family: kalam;
     color: #fff;
     font-weight: 3;
 }
 
-.logo h1 span{
+.logo h1 span {
     font-family: kalam;
     font-weight: 600;
+}
+
+/* Nome com efeito fade (gradiente) */
+.logo .nome-fade {
+    background: linear-gradient(90deg, #F5F6F6 0%, #cdb4e8 40%, #a78bfa 70%, #8A42DB 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    animation: nome-fade-shift 4s ease-in-out infinite alternate;
+}
+
+@keyframes nome-fade-shift {
+    0% { background-position: 0% center; }
+    100% { background-position: 100% center; }
 }
 
 .btn-social button{
@@ -61,24 +142,40 @@ html{
 
 
 @media screen and (max-width: 1020px){
-    /*Classes gerais*/
-
-    .flex{
+    .flex {
         flex-direction: column;
     }
-
-    .topo-do-site .flex{
+    .topo-do-site .flex {
         flex-direction: column-reverse;
     }
-
-    .titulo{
+    .titulo {
         font-size: 30px;
     }
-
-
-    /*Cabeçalho*/
-    .menu-desktop, .btn-contato{
+    .menu-desktop, .btn-contato {
         display: none;
     }
+}
 
+@media screen and (max-width: 768px) {
+    .interface {
+        padding: 0 5%;
+    }
+    .titulo {
+        font-size: 26px;
+    }
+    .logo h1 {
+        font-size: 1.25rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .interface {
+        padding: 0 6%;
+    }
+    .titulo {
+        font-size: 22px;
+    }
+    .logo h1 {
+        font-size: 1.1rem;
+    }
 }
