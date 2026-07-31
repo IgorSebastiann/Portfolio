@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 const GITHUB = "https://github.com/IgorSebastiann";
 const LINKEDIN = "https://www.linkedin.com/in/igor-sebastian-mathias-948697250/";
+const TELEFONE = "https://api.whatsapp.com/send?phone=5547997834557&text=Ol%C3%A1%2C%20Igor!%20Gostaria%20de%20conversar%20sobre%20um%20projeto.";
 
 const projects = [
   {
@@ -67,6 +68,10 @@ const skillGroups = [
 
 function Arrow({ diagonal = false }: { diagonal?: boolean }) {
   return <span aria-hidden="true">{diagonal ? "↗" : "→"}</span>;
+}
+
+function Phone({ diagonal = false }: { diagonal?: boolean }) {
+  return <span aria-hidden="true">{diagonal ? "📲↗" : "📲"}</span>;
 }
 
 function Scene() {
@@ -294,6 +299,7 @@ export default function App() {
           <div className="contact-actions">
             <a className="button primary" href={LINKEDIN} target="_blank" rel="noreferrer">Conversar no LinkedIn <Arrow diagonal /></a>
             <a className="text-link" href={GITHUB} target="_blank" rel="noreferrer">Ver GitHub <Arrow diagonal /></a>
+            <a className="text-link" href={TELEFONE} target="_blank" rel="noreferrer">Telefone <Phone diagonal /></a>
           </div>
         </section>
       </main>
@@ -301,8 +307,8 @@ export default function App() {
       <footer>
         <a className="brand" href="#top"><span>IS</span><i /></a>
         <p>Igor Sebastian Mathias<br /><span>RPA & Software Developer</span></p>
-        <div><a href={GITHUB} target="_blank" rel="noreferrer">GitHub</a><a href={LINKEDIN} target="_blank" rel="noreferrer">LinkedIn</a></div>
-        <small>© {new Date().getFullYear()} — Feito com intenção.</small>
+        <div><a href={GITHUB} target="_blank" rel="noreferrer">GitHub</a><a href={LINKEDIN} target="_blank" rel="noreferrer">LinkedIn</a><a href={TELEFONE} target="_blank" rel="noreferrer">Telefone</a></div>
+        <small>© {new Date().getFullYear()} — Feito com intenção.</small>,
       </footer>
     </>
   );
