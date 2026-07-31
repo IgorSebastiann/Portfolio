@@ -37,7 +37,7 @@ As informações profissionais foram adaptadas do README público do perfil `Igo
 
 ## Publicação
 
-O build gera a pasta `dist/`, pronta para hospedagem estática e preparada para publicação no OpenAI Sites.
+O build gera a pasta `dist/`, pronta para hospedagem estática em serviços como Vercel, Netlify, Cloudflare Pages, GitHub Pages ou Hostinger.
 
 ```bash
 npm run build
