@@ -11,7 +11,7 @@ test("professional claims stay grounded in the profile README", () => {
 });
 
 test("all core portfolio sections are present", () => {
-  for (const id of ["sobre", "habilidades", "projetos", "jornada", "contato"]) {
+  for (const id of ["servicos", "projetos", "processo", "sobre", "habilidades", "jornada", "contato"]) {
     assert.match(source, new RegExp(`id="${id}"`));
   }
 });

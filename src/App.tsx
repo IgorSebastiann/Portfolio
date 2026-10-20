@@ -2,41 +2,96 @@ import { useEffect, useRef, useState } from "react";
 
 const GITHUB = "https://github.com/IgorSebastiann";
 const LINKEDIN = "https://www.linkedin.com/in/igor-sebastian-mathias-948697250/";
-const TELEFONE = "https://api.whatsapp.com/send?phone=5547997834557&text=Ol%C3%A1%2C%20Igor!%20Gostaria%20de%20conversar%20sobre%20um%20projeto.";
+const TELEFONE = `https://api.whatsapp.com/send?phone=5547997834557&text=${encodeURIComponent("Olá, Igor! Vi seu portfólio e gostaria de um orçamento.")}`;
 
-const projects = [
+type Project = {
+  code: string;
+  name: string;
+  description: string;
+  tech: readonly string[];
+  link?: string;
+  badge?: string;
+  accent: "lime" | "cyan" | "orange" | "violet";
+};
+
+const projects: readonly Project[] = [
   {
-    code: "01 / WEB",
-    name: "Newsletter — Engenharia de Software",
-    description: "Aplicação acadêmica de newsletter criada para o curso de Engenharia de Software da Católica SC.",
-    tech: ["JavaScript", "Web"],
-    link: `${GITHUB}/Newsletter-Engenharia-de-Software_CatolicaSC`,
+    code: "01 / SISTEMA",
+    name: "Gestão de obrigações contábeis",
+    description: "Sistema web sob medida para um escritório de contabilidade controlar prazos, entregas e obrigações de cada cliente em um só lugar. Em uso pelo cliente; acesso privado.",
+    tech: ["Sistema web", "Sob medida", "Painel de controle"],
+    badge: "Cliente real · acesso privado",
     accent: "lime",
   },
   {
-    code: "02 / RPA",
+    code: "02 / LOJA",
+    name: "P7 Máquinas de Costura",
+    description: "Site com catálogo para uma loja de máquinas de costura industriais de Jaraguá do Sul: filtros por tipo, kits, seminovas, assistência técnica, carrinho e atendimento pelo WhatsApp.",
+    tech: ["Catálogo", "WhatsApp", "Responsivo", "Vercel"],
+    link: "https://p7maquinas.vercel.app/",
+    badge: "Projeto conceito",
+    accent: "cyan",
+  },
+  {
+    code: "03 / WEB",
+    name: "Newsletter — Engenharia de Software",
+    description: "Site publicado de newsletter criado para o curso de Engenharia de Software da Católica SC.",
+    tech: ["JavaScript", "Web", "Vercel"],
+    link: "https://newsletter-engenharia-de-software-c.vercel.app",
+    accent: "violet",
+  },
+  {
+    code: "04 / RPA",
     name: "UiPath Skills",
     description: "Repositório de prática e documentação de atividades, pacotes e fundamentos de desenvolvimento RPA.",
     tech: ["Python", "UiPath", "Automação"],
     link: `${GITHUB}/Uipath-Skills`,
-    accent: "cyan",
-  },
-  {
-    code: "03 / API",
-    name: "API Seminário Web",
-    description: "API REST acadêmica que demonstra fundamentos de backend e design de interfaces de programação.",
-    tech: ["Java", "REST API"],
-    link: `${GITHUB}/Api-Seminario-Web`,
     accent: "orange",
   },
   {
-    code: "04 / QA",
+    code: "05 / API",
+    name: "API Seminário Web",
+    description: "API REST que demonstra fundamentos de backend e design de interfaces de programação.",
+    tech: ["Java", "REST API"],
+    link: `${GITHUB}/Api-Seminario-Web`,
+    accent: "cyan",
+  },
+  {
+    code: "06 / QA",
     name: "N3 — Qualidade de Software",
-    description: "Projeto acadêmico centrado em testes e práticas de garantia de qualidade de software.",
+    description: "Projeto centrado em testes e práticas de garantia de qualidade de software.",
     tech: ["JavaScript", "QA"],
     link: `${GITHUB}/N3-Qualidade-de-Software`,
-    accent: "violet",
+    accent: "orange",
   },
+];
+
+const services = [
+  {
+    index: "01",
+    title: "Sites para negócios",
+    description: "Site profissional, rápido no celular e preparado para aparecer quando seus clientes pesquisam no Google.",
+    items: ["Layout responsivo", "SEO local", "Botão de WhatsApp", "Google Meu Negócio", "Domínio e hospedagem"],
+  },
+  {
+    index: "02",
+    title: "Sistemas sob medida",
+    description: "Controle de clientes, prazos, cadastros e relatórios do jeito que a sua rotina funciona, sem planilhas espalhadas.",
+    items: ["Painéis", "Cadastros", "Controle de prazos", "Acesso por login"],
+  },
+  {
+    index: "03",
+    title: "Automação de processos",
+    description: "Robôs em Python e UiPath que fazem o trabalho repetitivo: planilhas, PDFs, sistemas e sites.",
+    items: ["Python", "UiPath", "Excel & PDF", "Integrações"],
+  },
+] as const;
+
+const steps = [
+  { label: "Passo 1", title: "Conversa", text: "Entendo o seu negócio, seus clientes e o que o site ou sistema precisa resolver." },
+  { label: "Passo 2", title: "Prévia sem compromisso", text: "Monto um modelo inicial para você ver como ficaria antes de decidir qualquer coisa." },
+  { label: "Passo 3", title: "Ajustes", text: "Textos, fotos, cores e funcionalidades ajustados com você até ficar do seu jeito." },
+  { label: "Passo 4", title: "No ar + suporte", text: "Publico o projeto, configuro domínio e Google e continuo disponível para mudanças." },
 ] as const;
 
 const skillGroups = [
@@ -193,48 +248,116 @@ export default function App() {
           {menuOpen ? "Fechar" : "Menu"}
         </button>
         <nav id="nav" className={menuOpen ? "open" : ""} aria-label="Navegação principal">
-          <a href="#sobre">Sobre</a>
-          <a href="#habilidades">Habilidades</a>
+          <a href="#servicos">Serviços</a>
           <a href="#projetos">Projetos</a>
+          <a href="#processo">Como funciona</a>
+          <a href="#sobre">Sobre</a>
           <a href="#contato">Contato</a>
         </nav>
-        <a className="status" href="#contato"><i /> Disponível para conversar</a>
+        <a className="status" href={TELEFONE} target="_blank" rel="noreferrer"><i /> Disponível</a>
       </header>
 
       <main id="conteudo">
         <section className="hero" id="top">
-          <div className="eyebrow"><span>RPA / SOFTWARE / AI</span><span>Jaraguá do Sul, BR</span></div>
+          <div className="eyebrow"><span>SITES / SISTEMAS / AUTOMAÇÃO</span><span>Jaraguá do Sul, SC</span></div>
           <div className="hero-copy">
             <p className="kicker">Olá, eu sou Igor Sebastian.</p>
-            <h1>Eu transformo<br />rotina em <em>fluxo.</em></h1>
-            <p className="hero-lead">Desenvolvedor RPA e estudante de Engenharia de Software criando automações confiáveis, sistemas web e soluções inteligentes.</p>
+            <h1>Do manual<br />ao <em>digital.</em></h1>
+            <p className="hero-lead">Desenvolvedor de software em Jaraguá do Sul. Crio sites profissionais para negócios da região, sistemas sob medida e automações que economizam horas de trabalho.</p>
             <div className="hero-actions">
-              <a className="button primary" href="#projetos">Explorar projetos <Arrow /></a>
-              <a className="text-link" href={GITHUB} target="_blank" rel="noreferrer">GitHub <Arrow diagonal /></a>
+              <a className="button primary" href={TELEFONE} target="_blank" rel="noreferrer">Pedir orçamento no WhatsApp <Arrow diagonal /></a>
+              <a className="text-link" href="#projetos">Ver projetos <Arrow /></a>
             </div>
           </div>
-          <div className="hero-index" aria-hidden="true"><b>01</b><span>/ 05</span></div>
+          <div className="hero-index" aria-hidden="true"><b>01</b><span>/ 06</span></div>
           <div className="scroll-cue"><span>Role para explorar</span><i /></div>
         </section>
 
-        <section className="section about" id="sobre">
-          <div className="section-label"><span>01</span> Sobre</div>
+        <section className="section services" id="servicos">
+          <div className="section-label"><span>01</span> Serviços</div>
           <div className="section-body">
-            <p className="statement">Automação é mais do que velocidade.<br /><strong>É liberar pessoas para o trabalho que realmente importa.</strong></p>
+            <div className="section-intro">
+              <h2>O que eu<br /><em>faço.</em></h2>
+              <p>Seu cliente pesquisa no Google antes de escolher. Um site próprio mostra quem você é, passa confiança e leva direto para o seu WhatsApp.</p>
+            </div>
+            <div className="skill-list">
+              {services.map((service) => (
+                <article key={service.index}>
+                  <span>{service.index}</span>
+                  <div><h3>{service.title}</h3><p>{service.description}</p></div>
+                  <ul>{service.items.map((item) => <li key={item}>{item}</li>)}</ul>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section projects" id="projetos">
+          <div className="section-label"><span>02</span> Projetos</div>
+          <div className="section-body">
+            <div className="section-intro">
+              <h2>Trabalho em<br /><em>evidência.</em></h2>
+              <p>Um sistema em produção para cliente e diversos projetos próprios entre sites, APIs, automação e qualidade.</p>
+            </div>
+            <div className="project-list">
+              {projects.map((project) => {
+                const content = (
+                  <>
+                    <div className="project-visual" aria-hidden="true"><span>{project.code}</span><i /><b>{project.name.slice(0, 2).toUpperCase()}</b></div>
+                    <div className="project-copy">
+                      <small>{project.code}</small>
+                      {project.badge && <em className="project-badge">{project.badge}</em>}
+                      <h3>{project.name}</h3>
+                      <p>{project.description}</p>
+                      <ul>{project.tech.map((item) => <li key={item}>{item}</li>)}</ul>
+                    </div>
+                    <span className="project-arrow">{project.link ? <Arrow diagonal /> : <span aria-hidden="true">●</span>}</span>
+                  </>
+                );
+                return project.link ? (
+                  <a className={`project ${project.accent}`} key={project.name} href={project.link} target="_blank" rel="noreferrer">{content}</a>
+                ) : (
+                  <article className={`project ${project.accent} featured`} key={project.name}>{content}</article>
+                );
+              })}
+            </div>
+            <a className="button outline" href={`${GITHUB}?tab=repositories`} target="_blank" rel="noreferrer">Ver todos no GitHub <Arrow diagonal /></a>
+          </div>
+        </section>
+
+        <section className="section process" id="processo">
+          <div className="section-label"><span>03</span> Como funciona</div>
+          <div className="section-body">
+            <div className="section-intro">
+              <h2>Simples,<br />do início ao <em>fim.</em></h2>
+              <p>Você vê uma prévia antes de fechar e acompanha cada etapa.</p>
+            </div>
+            <ol className="timeline">
+              {steps.map((step) => (
+                <li key={step.title}><span>{step.label}</span><h3>{step.title}</h3><p>{step.text}</p></li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section className="section about" id="sobre">
+          <div className="section-label"><span>04</span> Sobre</div>
+          <div className="section-body">
+            <p className="statement">Tecnologia é mais do que código.<br /><strong>É dar tempo e visibilidade para quem toca o negócio.</strong></p>
             <div className="about-grid">
-              <p>Sou desenvolvedor RPA júnior com 1 ano de experiência profissional em automação: comecei com UiPath e hoje concentro meu trabalho em Python.</p>
-              <p>No 6º semestre de Engenharia de Software na Católica SC, amplio essa base com desenvolvimento web, APIs, dados e IA aplicada.</p>
+              <p>Sou desenvolvedor com 1 ano de experiência profissional em automação: comecei com UiPath e hoje concentro meu trabalho em Python. Em paralelo, desenvolvo sites e sistemas web, incluindo um sistema em uso por um escritório de contabilidade.</p>
+              <p>No 6º semestre de Engenharia de Software na Católica SC, mantenho mais de 20 projetos próprios no GitHub entre web, APIs, dados e IA aplicada.</p>
             </div>
             <div className="facts" aria-label="Resumo profissional">
+              <div><b>20+</b><span>projetos próprios no GitHub</span></div>
               <div><b>01</b><span>ano em automação profissional</span></div>
-              <div><b>08</b><span>meses de prática com UiPath</span></div>
               <div><b>06º</b><span>semestre de Engenharia de Software</span></div>
             </div>
           </div>
         </section>
 
         <section className="section skills" id="habilidades">
-          <div className="section-label"><span>02</span> Habilidades</div>
+          <div className="section-label"><span>05</span> Habilidades</div>
           <div className="section-body">
             <div className="section-intro">
               <h2>Do processo<br />ao <em>produto.</em></h2>
@@ -252,33 +375,8 @@ export default function App() {
           </div>
         </section>
 
-        <section className="section projects" id="projetos">
-          <div className="section-label"><span>03</span> Projetos</div>
-          <div className="section-body">
-            <div className="section-intro">
-              <h2>Trabalho em<br /><em>evidência.</em></h2>
-              <p>Projetos públicos que registram minha evolução entre web, automação, APIs e qualidade.</p>
-            </div>
-            <div className="project-list">
-              {projects.map((project) => (
-                <a className={`project ${project.accent}`} key={project.name} href={project.link} target="_blank" rel="noreferrer">
-                  <div className="project-visual" aria-hidden="true"><span>{project.code}</span><i /><b>{project.name.slice(0, 2).toUpperCase()}</b></div>
-                  <div className="project-copy">
-                    <small>{project.code}</small>
-                    <h3>{project.name}</h3>
-                    <p>{project.description}</p>
-                    <ul>{project.tech.map((item) => <li key={item}>{item}</li>)}</ul>
-                  </div>
-                  <span className="project-arrow"><Arrow diagonal /></span>
-                </a>
-              ))}
-            </div>
-            <a className="button outline" href={`${GITHUB}?tab=repositories`} target="_blank" rel="noreferrer">Ver todos no GitHub <Arrow diagonal /></a>
-          </div>
-        </section>
-
         <section className="section journey" id="jornada">
-          <div className="section-label"><span>04</span> Jornada</div>
+          <div className="section-label"><span>06</span> Jornada</div>
           <div className="section-body">
             <div className="section-intro">
               <h2>Aprender.<br />Aplicar. <em>Evoluir.</em></h2>
@@ -294,21 +392,21 @@ export default function App() {
 
         <section className="contact" id="contato">
           <div className="contact-orbit" aria-hidden="true"><i /><i /><i /></div>
-          <p>Tem um processo para automatizar ou uma ideia para construir?</p>
-          <h2>Vamos tirar<br />do <em>manual.</em></h2>
+          <p>Precisa de um site, um sistema ou quer automatizar um processo?</p>
+          <h2>Vamos tirar<br />do <em>papel.</em></h2>
           <div className="contact-actions">
-            <a className="button primary" href={LINKEDIN} target="_blank" rel="noreferrer">Conversar no LinkedIn <Arrow diagonal /></a>
-            <a className="text-link" href={GITHUB} target="_blank" rel="noreferrer">Ver GitHub <Arrow diagonal /></a>
-            <a className="text-link" href={TELEFONE} target="_blank" rel="noreferrer">Telefone <Phone diagonal /></a>
+            <a className="button primary" href={TELEFONE} target="_blank" rel="noreferrer">Chamar no WhatsApp <Phone /></a>
+            <a className="text-link" href={LINKEDIN} target="_blank" rel="noreferrer">LinkedIn <Arrow diagonal /></a>
+            <a className="text-link" href={GITHUB} target="_blank" rel="noreferrer">GitHub <Arrow diagonal /></a>
           </div>
         </section>
       </main>
 
       <footer>
         <a className="brand" href="#top"><span>IS</span><i /></a>
-        <p>Igor Sebastian Mathias<br /><span>RPA & Software Developer</span></p>
-        <div><a href={GITHUB} target="_blank" rel="noreferrer">GitHub</a><a href={LINKEDIN} target="_blank" rel="noreferrer">LinkedIn</a><a href={TELEFONE} target="_blank" rel="noreferrer">Telefone</a></div>
-        <small>© {new Date().getFullYear()} — Feito com intenção.</small>,
+        <p>Igor Sebastian Mathias<br /><span>Sites, sistemas & automação · Jaraguá do Sul</span></p>
+        <div><a href={GITHUB} target="_blank" rel="noreferrer">GitHub</a><a href={LINKEDIN} target="_blank" rel="noreferrer">LinkedIn</a><a href={TELEFONE} target="_blank" rel="noreferrer">WhatsApp</a></div>
+        <small>© {new Date().getFullYear()} — Feito com intenção.</small>
       </footer>
     </>
   );

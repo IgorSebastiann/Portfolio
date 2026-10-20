@@ -253,3 +253,6 @@ footer > div { display: flex; flex-direction: column; font: 400 .68rem var(--mon
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+.project.featured .project-visual { border-color: rgba(184,255,79,.4); }
+.project-badge { display: block; width: fit-content; margin-top: .7rem; padding: .2rem .55rem; border: 1px solid currentColor; font: 400 .58rem var(--mono); text-transform: uppercase; letter-spacing: .08em; }
